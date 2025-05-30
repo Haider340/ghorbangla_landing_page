@@ -1,152 +1,160 @@
-// Mobile Navigation
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    hamburger.classList.toggle('active');
-});
-
-// Close mobile menu when clicking on a link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        hamburger.classList.remove('active');
-    });
-});
-
-// Navbar scroll effect
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// Form submission
-const orderForm = document.querySelector('.order-form form');
-if (orderForm) {
-    orderForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form values
-        const name = this.querySelector('input[type="text"]').value;
-        const phone = this.querySelector('input[type]').value);
-
-        // Mobile Navigation
+// Mobile Menu Toggle
 function toggleMobileMenu() {
     const navLinks = document.querySelector('.nav-links');
-    const hamburger = document.querySelector('.hamburger');
     navLinks.classList.toggle('active');
-    hamburger.classList.toggle('active');
 }
 
-// Close mobile menu when clicking on a link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        const navLinks = document.querySelector('.nav-links');
-        const hamburger = document.querySelector('.hamburger');
-        navLinks.classList.remove('active');
-        hamburger.classList.remove('active');
-    });
-});
-
-// Navbar scroll effect
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
-
-// Smooth scrolling function
+// Smooth Scrolling
 function scrollToSection(sectionId) {
-    const targetElement = document.querySelector(sectionId);
-    if (targetElement) {
+    const section = document.getElementById(sectionId);
+    if (section) {
         window.scrollTo({
-            top: targetElement.offsetTop - 80,
+            top: section.offsetTop - 80,
             behavior: 'smooth'
         });
+        
+        // Close mobile menu if open
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.remove('active');
     }
 }
 
-// Form submission
+// Form Submission
 function submitOrder(event) {
     event.preventDefault();
     
-    // Get form values
-    const name = event.target.querySelector('input[type="text"]').value;
-    const phone = event.target.querySelector('input[type="tel"]').value;
-    const address = event.target.querySelector('textarea').value;
-    const quantity = event.target.querySelector('select').value;
-    
-    // Here you would typically send this data to your server
-    console.log('Order submitted:', { name, phone, address, quantity });
-    
-    // Show confirmation modal
+    // Here you would normally send the form data to your server
+    // For demo purposes, we'll just show the confirmation modal
     showModal();
     
     // Reset form
     event.target.reset();
 }
 
-// Show modal function
+// Modal Functions
 function showModal() {
     const modal = document.getElementById('orderModal');
     modal.style.display = 'flex';
-    
-    // Close modal after 5 seconds
-    setTimeout(() => {
-        modal.style.display = 'none';
-    }, 5000);
 }
 
-// Close modal function
 function closeModal() {
     const modal = document.getElementById('orderModal');
     modal.style.display = 'none';
 }
 
-// Payment method selection
-function showPaymentMethod(method) {
-    let message = '';
-    switch(method) {
-        case 'bkash':
-            message = 'বিকাশ নম্বর: ০১XXXXXXXX (ট্রান্সাকশন আইডি অবশ্যই দিন)';
-            break;
-        case 'nagad':
-            message = 'নগদ নম্বর: ০১XXXXXXXX (ট্রান্সাকশন আইডি অবশ্যই দিন)';
-            break;
-        case 'cash':
-            message = 'ক্যাশ অন ডেলিভারি (শুধুমাত্র ঢাকা শহরের জন্য)';
-            break;
+//// Order Flow Functions
+let selectedPaymentMethod = null;
+
+function submitOrder(event) {
+    event.preventDefault();
+    // Validate form first
+    const form = event.target;
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
     }
-    alert(message);
+    
+    // Show payment options
+    showPaymentModal();
 }
 
-// Social media links
+function showPaymentModal() {
+    const modal = document.getElementById('paymentModal');
+    modal.style.display = 'flex';
+}
+
+function closePaymentModal() {
+    const modal = document.getElementById('paymentModal');
+    modal.style.display = 'none';
+}
+
+function selectPayment(method) {
+    selectedPaymentMethod = method;
+    const instructions = {
+        bkash: `
+            <h4>বিকাশে পেমেন্ট করুন</h4>
+            <ol>
+                <li>*247# ডায়াল করুন</li>
+                <li>Payment অপশন সিলেক্ট করুন</li>
+                <li>মার্চেন্ট নাম্বার দিন: <strong>01712872026</strong></li>
+                <li>Amount দিন: <strong>${document.querySelector('.discounted-price').textContent}</strong></li>
+                <li>Reference হিসেবে আপনার নাম লিখুন</li>
+            </ol>
+            <p>পেমেন্ট সম্পন্ন হলে নিচের Confirm বাটনে ক্লিক করুন</p>
+        `,
+        nagad: `
+            <h4>নগদে পেমেন্ট করুন</h4>
+            <ol>
+                <li>নগদ অ্যাপ খুলুন</li>
+                <li>Send Money সিলেক্ট করুন</li>
+                <li>মার্চেন্ট নাম্বার দিন: <strong>01712872026</strong></li>
+                <li>Amount দিন: <strong>${document.querySelector('.discounted-price').textContent}</strong></li>
+                <li>Reference হিসেবে আপনার নাম লিখুন</li>
+            </ol>
+            <p>পেমেন্ট সম্পন্ন হলে নিচের Confirm বাটনে ক্লিক করুন</p>
+        `,
+        cash: `
+            <h4>ক্যাশ অন ডেলিভারি</h4>
+            <p>আপনার অর্ডার কনফার্ম করা হয়েছে</p>
+            <p>আমাদের প্রতিনিধি পণ্য ডেলিভারির সময় টাকা গ্রহণ করবেন</p>
+            <p>ডেলিভারি সময়: ২৪-৪৮ ঘন্টা (ঢাকা শহর)</p>
+        `
+    };
+    
+    // Show instructions
+    const instructionsDiv = document.createElement('div');
+    instructionsDiv.className = 'payment-instructions active';
+    instructionsDiv.innerHTML = instructions[method];
+    
+    // Clear previous instructions
+    const container = document.querySelector('.payment-options');
+    const oldInstructions = document.querySelector('.payment-instructions');
+    if (oldInstructions) oldInstructions.remove();
+    
+    container.after(instructionsDiv);
+    
+    // Show confirm button (except for COD)
+    const confirmBtn = document.createElement('button');
+    confirmBtn.className = `payment-confirm-btn ${method !== 'cash' ? 'active' : ''}`;
+    confirmBtn.textContent = 'পেমেন্ট সম্পন্ন হয়েছে';
+    confirmBtn.onclick = () => {
+        closePaymentModal();
+        showOrderConfirmation();
+        if (method !== 'cash') {
+            // Here you would typically verify payment with backend
+            console.log(`Verify ${method} payment for order`);
+        }
+    };
+    
+    const oldBtn = document.querySelector('.payment-confirm-btn');
+    if (oldBtn) oldBtn.remove();
+    instructionsDiv.after(confirmBtn);
+    
+    // Auto-confirm for COD
+    if (method === 'cash') {
+        setTimeout(() => {
+            closePaymentModal();
+            showOrderConfirmation();
+        }, 2000);
+    }
+}
+
+function showOrderConfirmation() {
+    const modal = document.getElementById('orderModal');
+    modal.style.display = 'flex';
+    
+    // Here you would typically submit the order to your backend
+    const form = document.getElementById('orderForm');
+    const formData = new FormData(form);
+    const orderData = {
+        ...Object.fromEntries(formData),
+        paymentMethod: selectedPaymentMethod,
+        amount: document.querySelector('.discounted-price').textContent
+    };
+    console.log('Order submitted:', orderData);
+}
+
+// Social Links
 function openSocialLink(platform) {
     let url = '';
     switch(platform) {
@@ -163,55 +171,54 @@ function openSocialLink(platform) {
     window.open(url, '_blank');
 }
 
-// WhatsApp function
+// WhatsApp Order
 function openWhatsApp() {
-    const phone = '8801XXXXXXXX';
-    const message = 'আমি অর্জুন হার্ট কেয়ার পাউডার অর্ডার করতে চাই।';
+    const phone = '01XXXXXXXX';
+    const message = 'আমি অর্জুন হার্ট কেয়ার পাউডার অর্ডার করতে চাই';
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
 }
 
-// Page navigation
+// Page Navigation
 function openPage(page) {
     let url = '';
     switch(page) {
         case 'privacy':
-            url = 'privacy-policy.html';
+            url = 'privacy.html';
             break;
         case 'refund':
-            url = 'refund-policy.html';
+            url = 'refund.html';
             break;
         case 'terms':
-            url = 'terms-conditions.html';
+            url = 'terms.html';
             break;
     }
     window.location.href = url;
 }
-
-// Initialize animations when elements come into view
-document.addEventListener('DOMContentLoaded', function() {
-    const animateElements = document.querySelectorAll('.content-box, .certification-card, .testimonial-card');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate__animated', 'animate__fadeInUp');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.1
-    });
-    
-    animateElements.forEach(element => {
-        observer.observe(element);
-    });
-});
+// Remove or update this existing function
+function openWhatsApp() {
+    const phone = '8801712872026'; // With country code for Bangladesh (880)
+    const message = 'আমি অর্জুন হার্ট কেয়ার পাউডার অর্ডার করতে চাই';
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+}
 
 // Close modal when clicking outside
-window.addEventListener('click', function(event) {
+window.onclick = function(event) {
     const modal = document.getElementById('orderModal');
-    if (event.target === modal) {
+    if (event.target == modal) {
         closeModal();
     }
-});
+}
+
+// Sticky Navbar on Scroll
+window.onscroll = function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.pageYOffset > 100) {
+        navbar.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+        navbar.style.padding = '10px 0';
+    } else {
+        navbar.style.boxShadow = 'none';
+        navbar.style.padding = '15px 0';
+    }
+};

@@ -98,12 +98,12 @@
             <h2>আমাদের স্বীকৃতি ও সার্টিফিকেশন</h2>
             <div class="certification-grid">
                 <div class="certification-card">
-                    <img src="images/ghorbangla certificate.webp" alt="GMP Certified">
+                    <img src="" alt="GMP Certified">
                     <h3>GMP Certified</h3>
                     <p>আন্তর্জাতিক মানের উৎপাদন প্রক্রিয়া</p>
                 </div>
                 <div class="certification-card">
-                    <img src="bcsir-certified.png" alt="BCSIR Approved">
+                    <img src="images/ghorbangla certificate.webp" alt="BCSIR Approved">
                     <h3>BCSIR Approved</h3>
                     <p>বাংলাদেশ বিজ্ঞান ও শিল্প গবেষণা পরিষদ অনুমোদিত</p>
                 </div>
@@ -163,20 +163,20 @@
     </section>
 
     <!-- Usage Instruction Section -->
-    <section class="usage" id="how-to-use">
-        <div class="container">
-            <h2>কিভাবে খাবেন অর্জুন হার্ট কেয়ার পাউডার?</h2>
-            <div class="content-box">
-                <ol>
-                    <li>১ চা চামচ গুঁড়া গরম পানি বা দুধ সহযোগে সকাল ও রাতে খান</li>
-                    <li>খালি পেটে বা খাওয়ার পরে না খাওয়াই উত্তম</li>
-                    <li>অন্তত ৪–৬ সপ্তাহ নিয়মিত গ্রহণ করুন ফল পেতে</li>
-                    <li>প্রেসক্রিপশন ড্রাগের সাথে ব্যবহারে চিকিৎসকের পরামর্শ নিন</li>
-                </ol>
-                <a href="#order" class="cta-btn" onclick="scrollToSection('order')">ব্যবহারের সঠিক নিয়ম জানুন</a>
-            </div>
+<section class="usage" id="how-to-use">
+    <div class="container">
+        <h2>কিভাবে খাবেন অর্জুন হার্ট কেয়ার পাউডার?</h2>
+        <div class="content-box">
+            <ol class="custom-numbered-list">
+                <li><span class="list-content">১ চা চামচ গুঁড়া গরম পানি বা দুধ সহযোগে সকাল ও রাতে খান</span></li>
+                <li><span class="list-content">খালি পেটে বা খাওয়ার পরে না খাওয়াই উত্তম</span></li>
+                <li><span class="list-content">অন্তত ৪–৬ সপ্তাহ নিয়মিত গ্রহণ করুন ফল পেতে</span></li>
+                <li><span class="list-content">প্রেসক্রিপশন ড্রাগের সাথে ব্যবহারে চিকিৎসকের পরামর্শ নিন</span></li>
+            </ol>
+            <a href="#order" class="cta-btn" onclick="scrollToSection('order')">ব্যবহারের সঠিক নিয়ম জানুন</a>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Trustworthy Section -->
     <section class="trust">
@@ -276,14 +276,27 @@
                         </div>
                         <button type="submit" class="order-now-btn">অর্ডার কনফার্ম করুন</button>
                     </form>
-                    <div class="payment-methods">
-                        <p>পেমেন্ট অপশন:</p>
-                        <div class="payment-icons">
-                            <i class="fab fa-cc-bkash" onclick="showPaymentMethod('bkash')"></i>
-                            <i class="fab fa-cc-nagad" onclick="showPaymentMethod('nagad')"></i>
-                            <i class="fas fa-money-bill-wave" onclick="showPaymentMethod('cash')"></i>
-                        </div>
-                    </div>
+                    <!-- Payment Options Modal -->
+<div class="modal" id="paymentModal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closePaymentModal()">&times;</span>
+        <h3>পেমেন্ট মেথড সিলেক্ট করুন</h3>
+        <div class="payment-options">
+            <div class="payment-option" onclick="selectPayment('bkash')">
+                <i class="fab fa-cc-bkash"></i>
+                <span>বিকাশ</span>
+            </div>
+            <div class="payment-option" onclick="selectPayment('nagad')">
+                <i class="fas fa-mobile-alt"></i>
+                <span>নগদ</span>
+            </div>
+            <div class="payment-option" onclick="selectPayment('cash')">
+                <i class="fas fa-money-bill-wave"></i>
+                <span>ক্যাশ অন ডেলিভারি</span>
+            </div>
+        </div>
+    </div>
+</div>
                 </div>
             </div>
         </div>
@@ -304,7 +317,7 @@
                 </div>
                 <div class="footer-col">
                     <h3>যোগাযোগ</h3>
-                    <p><i class="fas fa-phone"></i> ০১XXXXXXXX</p>
+                    <p><i class="fas fa-phone"></i>01712872026</p>
                     <p><i class="fas fa-envelope"></i> info@ghorbangla.com</p>
                     <p><i class="fas fa-map-marker-alt"></i> ঢাকা, বাংলাদেশ</p>
                 </div>
@@ -312,7 +325,7 @@
                     <h3>সেবা সময়</h3>
                     <p>সকাল ৯টা - রাত ৯টা</p>
                     <p>শুক্রবার বন্ধ</p>
-                    <a href="#" class="whatsapp-btn" onclick="openWhatsApp()"><i class="fab fa-whatsapp"></i> WhatsApp এ অর্ডার</a>
+                    <a href="https://wa.me/8801712872026" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp এ অর্ডার</a>
                 </div>
                 <div class="footer-col">
                     <h3>গুরুত্বপূর্ণ লিংক</h3>
