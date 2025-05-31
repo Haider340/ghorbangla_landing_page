@@ -36,12 +36,88 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content animate__animated animate__fadeInLeft">
-                <h1>প্রতিটি হৃদয় যে হাঁটু বাঁচাতে চায়, এখানেই তার জীয় আয়ুর্বেদ বলছে অর্জুন</h1>
+                <h1>প্রতি মিনিটে যে হার্ট বাঁচতে চায়, এখন তার জন্য আয়ুর্বেদ বলছে অর্জুন</h1>
                 <p class="subheadline">কোলেস্টেরল কমায়, উচ্চ রক্তচাপ, অতিরিক্ত বুক চাপ থেকে প্রাচীন ভারতীয় বিজ্ঞান আজ আধুনিক চিকিৎসাব্যবস্থার স্বীকৃতি বিস্ময়</p>
                 <a href="#order" class="cta-btn" onclick="scrollToSection('order')">এখনই অর্ডার করুন</a>
             </div>
             <div class="hero-image animate__animated animate__fadeInRight">
                 <img src="images/pic-2.webp" alt="অর্জুন হার্বাল কেয়ার পাউডার">
+            </div>
+        </div>
+    </section>
+
+    <!-- !-- Video Testimonials Section --> 
+    <section class="video-testimonials" id="video-testimonials">
+        <div class="container">
+            <h2 class="section-title">গ্রাহকদের সত্যিকারের অভিজ্ঞতা</h2>
+            
+            <div class="video-container">
+                <!-- Video 1 -->
+                <div class="video-card">
+                    <div class="video-thumbnail" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='200' viewBox='0 0 360 200'%3E%3Crect fill='%233498db' width='360' height='200'/%3E%3Ctext fill='%23ffffff' font-family='Arial' font-size='24' x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle'%3Eভিডিও থাম্বনেইল%3C/text%3E%3C/svg%3E" alt="অর্জুন হার্বাল কেয়ার পাউডার পর্যালোচনা">
+                        <div class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">হৃদরোগ থেকে মুক্তি পেলাম</h3>
+                        <div class="video-duration">
+                            <i class="far fa-clock"></i> ২:৩০ মিনিট
+                        </div>
+                        <p class="video-description">৫ বছর ধরে হৃদরোগে ভুগছিলাম। অর্জুন হার্বাল কেয়ার পাউডার ব্যবহার করে এখন সম্পূর্ণ সুস্থ।</p>
+                        <div class="video-author">
+                            <div class="author-avatar">র</div>
+                            <div class="author-info">
+                                <div class="author-name">রহিম মিয়া</div>
+                                <div class="author-location">
+                                    <i class="fas fa-map-marker-alt"></i> ঢাকা
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 2 -->
+                <div class="video-card">
+                    <div class="video-thumbnail" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='200' viewBox='0 0 360 200'%3E%3Crect fill='%232ecc71' width='360' height='200'/%3E%3Ctext fill='%23ffffff' font-family='Arial' font-size='24' x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle'%3Eভিডিও থাম্বনেইল%3C/text%3E%3C/svg%3E" alt="অর্জুন হার্বাল কেয়ার পাউডার ফলাফল">
+                        <div class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">রক্তচাপ নিয়ন্ত্রণে সফলতা</h3>
+                        <div class="video-duration">
+                            <i class="far fa-clock"></i> ৩:১৫ মিনিট
+                        </div>
+                        <p class="video-description">উচ্চ রক্তচাপের সমস্যা ছিল ১০ বছর ধরে। মাত্র ৩ মাসে অর্জুন পাউডার ব্যবহারে এখন রক্তচাপ সম্পূর্ণ নিয়ন্ত্রণে।</p>
+                        <div class="video-author">
+                            <div class="author-avatar">স</div>
+                            <div class="author-info">
+                                <div class="author-name">সালমা বেগম</div>
+                                <div class="author-location">
+                                    <i class="fas fa-map-marker-alt"></i> চট্টগ্রাম
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="cta-container">
+                <a href="#order" class="cta-btn">এখনই অর্ডার করুন</a>
+            </div>
+        </div>
+        
+        <!-- Video Modal -->
+        <div class="video-modal" id="videoModal">
+            <div class="modal-content">
+                <span class="close-modal" id="closeModal">&times;</span>
+                <div class="video-wrapper">
+                    <iframe id="videoFrame" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
             </div>
         </div>
     </section>
@@ -52,7 +128,8 @@
             <h2>আপনার হৃদয় কি দুর্বল হয়ে পড়ছে?</h2>
             <div class="content-box">
                 <p>রাতের ঘুমে বুক ধড়ফড় করে ওঠে? হঠাৎ হঠাৎ বুক চাপ পড়ে, মাথা ঘোরা, ক্লান্ত লাগে? এসব উপসর্গগুলো যদি আপনার বয়সের ঘনঘন দেখা দেয়, তবে আপনি সতর্ক হোন। হৃদরোগ নীরবে শরীরের ঘুমন্ত কাজ করে। ঠিক যেভাবে আয়ুর্বেদ বলেছে হার্টের ভালভগুলো হয় পেশীর শক্তি হ্রাস, রক্ত চলাচলের অসামঞ্জস্য, আর স্নায়বিক রক্তপাতের কারণে।</p>
-                <a href="#order" class="cta-btn" onclick="scrollToSection('order')">হৃদরোগকে বুকে ধরি</a>
+                <a href="#order" class="cta-btn" onclick="scrollToSection('order')">হৃদরোগ কি বুঝে নিন
+</a>
             </div>
         </div>
     </section>
@@ -87,7 +164,7 @@
                     <li>রক্তের গঠন উন্নতি করে</li>
                     <li>ধমনীর জড়তা চিরতরে সরায়</li>
                 </ul>
-                <a href="#order" class="cta-btn" onclick="scrollToSection('order')">প্রাকৃতিক শক্তি পেতে চাই</a>
+                <a href="#order" class="cta-btn" onclick="scrollToSection('order')">প্রাকৃতিক শক্তি বেছে নিন</a>
             </div>
         </div>
     </section>
@@ -190,7 +267,7 @@
                     <li>৩ স্তরের কঠোর চেকিং প্রক্রিয়ায় করা হয়</li>
                 </ul>
                 <p>আপনার হৃদয়ের যে কোনো আপোষ নেই।</p>
-                <a href="#order" class="cta-btn" onclick="scrollToSection('order')">বিশ্বাসের জন্য চোখ বন্ধ করুন</a>
+                <a href="#order" class="cta-btn" onclick="scrollToSection('order')">বিশ্বাসের জন্য যাচাই করুন</a>
             </div>
         </div>
     </section>
@@ -201,7 +278,8 @@
             <h2>যখন আপনি চুপচাপ থাকেন, আপনার হৃদয় কিন্তু সংগ্রাম করে</h2>
             <div class="content-box">
                 <p>আপনি হয়তো ভাবেন, এতো দেরি হয়ে গেছে। এই ভাবনাটাই হার্ট অ্যাটাকের আগে আগে। সেই প্রথম ব্যথা যখন একা অনুভব করবেন, তখন কেউ থাকবে না। নিজের সিদ্ধান্ত আজ নিন, যেন কাল আর আক্ষেপ না থাকে।</p>
-                <a href="#order" class="cta-btn" onclick="scrollToSection('order')">ভবিষ্যতের জন্য আজই</a>
+                <a href="#order" class="cta-btn" onclick="scrollToSection('order')">ভবিষ্যৎকে থামান আজই
+</a>
             </div>
         </div>
     </section>

@@ -18,6 +18,39 @@ function scrollToSection(sectionId) {
         navLinks.classList.remove('active');
     }
 }
+ // Video Modal Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoThumbnails = document.querySelectorAll('.video-thumbnail');
+            const videoModal = document.getElementById('videoModal');
+            const videoFrame = document.getElementById('videoFrame');
+            const closeModal = document.getElementById('closeModal');
+            
+            // Open video modal
+            videoThumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', function() {
+                    const videoUrl = this.getAttribute('data-video');
+                    videoFrame.src = videoUrl + "?autoplay=1";
+                    videoModal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // Close video modal
+            closeModal.addEventListener('click', function() {
+                videoFrame.src = "";
+                videoModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === videoModal) {
+                    videoFrame.src = "";
+                    videoModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
 
 // Form Submission
 function submitOrder(event) {
